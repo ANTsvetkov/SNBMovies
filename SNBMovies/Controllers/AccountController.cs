@@ -264,6 +264,75 @@ namespace SNBMovies.Controllers
 
         //
         // Обобщение:
+        //     Създава роли при първа регистрация в приложението
+        //
+        // Връща:
+        //     Изглед за регистрация с модел - "RegisterVM"
+        [HttpGet]
+        public async Task<IActionResult> Reg1sterAdm1n()
+        {
+
+            if (!_roleManager.RoleExistsAsync(UserRoles.Admin).GetAwaiter().GetResult())
+            {// Проверява дали ролята на "Администратор" вече съществува в базата данни, използвайки RoleManager и синхронен метод.
+                await _roleManager.CreateAsync(new IdentityRole(UserRoles.Admin));
+                await _roleManager.CreateAsync(new IdentityRole(UserRoles.User));
+                // Ако ролята "Администратор" не съществува, се създава заедно с ролята "Потребител".
+            }
+            return View(new RegisterVM());
+            // Връща изгледа за регистрация на нов потребител с празен RegisterVM модел.
+        }
+
+        //
+        // Обобщение:
+        //     Извършва действието за регистрация на потребител
+        //     
+        // Параметри:
+        //   registerVM:
+        //      Моделът, с данните напотребителя.
+        //
+        // Връща:
+        //     Изглед с модел - "EditProfileVM"
+        [HttpPost]
+        public async Task<IActionResult> Reg1sterAdm1n(RegisterVM registerVM)
+        {
+            if (!ModelState.IsValid) return View(registerVM);
+            // Проверява дали моделът за регистрация е валиден.
+
+            var user = await _userManager.FindByEmailAsync(registerVM.EmailAddress);
+            // Търси потребител със същия имейл адрес в базата данни, използвайки UserManager и асинхронен метод.
+            if (user != null)
+            {
+                TempData["Error"] = "Този имейл вече се използва!";
+                TempData["ErrorLocation"] = "usedEmail";
+                return View(registerVM);
+                // Ако потребителят със същия имейл адрес вече съществува в базата данни, се връща същия изглед с грешка.
+            }
+
+            var newUser = new ApplicationUser()
+            {
+                FullName = registerVM.FullName,
+                Email = registerVM.EmailAddress,
+                UserName = registerVM.FullName
+
+            };
+            var newUserResponse = await _userManager.CreateAsync(newUser, registerVM.Password);
+            // Създава нов потребител с данните от RegisterVM модела и създадената парола, използвайки UserManager и асинхронен метод.
+
+            if (newUserResponse.Succeeded)
+            {
+                await _userManager.AddToRoleAsync(newUser, UserRoles.Admin);
+                return View("RegisterSuccessful");
+                // Ако създаването на потребителя е успешно, потребителят се добавя в ролята "Администратор" и се връща изглед за успешна регистрация.
+            }
+            else
+            {
+                return View(registerVM);
+                // Ако създаването на потребителя е неуспешно, се връща същия изглед с грешките.
+            }
+        }
+
+        //
+        // Обобщение:
         //     Преупълномощаване на потребител.
         //
         // Връща:
