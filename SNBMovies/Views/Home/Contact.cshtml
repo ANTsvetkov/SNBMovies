@@ -1,0 +1,252 @@
+﻿@model SNBMovies.Models.ViewModels.AboutVM
+
+<!doctype html>
+<html lang="zxx">
+<body>
+    <!--/breadcrumbs -->
+    <div class="w3l-breadcrumbs">
+        <nav id="breadcrumbs" class="breadcrumbs">
+            <div class="container page-wrapper">
+                <a href="~/Home/Index">Начало</a> » <span class="breadcrumb_last" aria-current="page">За Нас</span>
+            </div>
+        </nav>
+    </div>
+    <!--//breadcrumbs -->
+    <section class="w3l-loginhny py-5">
+        <div class="container py-lg-3">
+            <div class="w3l-hny-login">
+                <div class="w3l-hny-login-info" style="max-width:1500px;">
+                    <div class="w3l-ab-grids py-5">
+                        <div class="container py-lg-4">
+                            <div class="align-items-center">
+                                <div class="align-center">
+                                    <img class="img-fluid" style="filter: drop-shadow(2px 4px 6px black); filter: brightness(0.5) drop-shadow(2px 4px 6px black);" src="~/assets/images/3658597.jpg">
+                                    <h3 class="hny-title text-center" style="position: absolute;top: 82%;left: 50%;transform: translate(-50%, -50%);color: white;font-size: 60px;">
+                                        За Нас
+                                    </h3>
+                                </div>
+                            </div>
+                            <div style="border-style:groove; border-radius:9px; border-color: deeppink; margin-top: 56px;">
+                                <p class="" style="font-size: 25px; color:dimgrey;">
+                                    Добре дошли в нашия онлайн магазин за филми!
+                                    Ние сме екип от филмови ентусиасти, които са горди да предоставят най-добрите филми на вашия екран.
+                                    Независимо дали сте фен на класическото кино, независими филми или най-новите холивудски блокбъстъри, ние имаме по нещо за всеки.
+                                </p>
+                                <br />
+                                <p class="" style="font-size: 25px; color:dimgrey;">
+                                    В нашия магазин ние се гордеем с това, че предлагаме богат избор от филми във всички жанрове, от екшън и приключения до драма, комедия и ужаси.
+                                    Нашият екип непрекъснато актуализира нашия инвентар, за да сме сигурни, че винаги имате достъп до най-новите и най-добрите филми.
+                                </p>
+                                <br />
+                                <p class="" style="font-size: 25px; color:dimgrey;">
+                                    В допълнение към нашата обширна колекция от филми, ние също сме посветени на предоставянето на първокласно обслужване на клиентите.
+                                    Ние разбираме, че пазаруването онлайн понякога може да бъде плашещо изживяване, поради което сме тук, за да ви помогнем на всяка стъпка.
+                                    Нашият любезен екип за поддръжка на клиенти е на разположение 24 часа в денонощието, 7 дни в седмицата, за да отговори на всички въпроси, които може да имате, и да гарантира, че пазаруването ви ще бъде възможно най-гладко и безпроблемно.
+                                </p>
+                                <br />
+                                <p class="" style="font-size: 25px; color:dimgrey;">
+                                    Независимо дали искате да купите най-новия блокбъстър или да преоткриете стара класика, можете да разчитате на нас, за да доставим филмите, които обичате.
+                                    Благодарим ви, че избрахте нашия магазин и се надяваме да се насладите на пазаруването си с нас!
+                                </p>
+                            </div>
+                            <div class="w3l-counter-stats-info text-center">
+                                <div class="stats_left">
+                                    <div class="counter_grid">
+                                        <div class="icon_info">
+                                            <p class="counter">@Model.MoviesCount.Count()</p>
+                                            <h4>Филми</h4>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="stats_left">
+                                    <div class="counter_grid">
+                                        <div class="icon_info">
+                                            <p class="counter">@Model.OrdersCount.Count()</p>
+                                            <h4>Покупки</h4>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="stats_left">
+                                    <div class="counter_grid">
+                                        <div class="icon_info">
+                                            <p class="counter">@Model.UsersCount.Count()</p>
+                                            <h4>Потребители</h4>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="stats_left">
+                                    <div class="counter_grid">
+                                        <div class="icon_info">
+                                            <p class="counter">2022</p>
+                                            <h4>Начало</h4>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- //about-->
+    
+    <!-- contact1 -->
+    <!--grids-sec2-->
+
+    <section class="w3l-loginhny py-5">
+        <div class="container py-lg-3">
+            <div class="w3l-hny-login">
+                <div class="w3l-hny-login-info" style="max-width:1500px;">
+                    <section class="w3l-grids">
+                        <div class="grids-main py-5">
+                            <div class="container py-lg-3">
+                                <div class="headerhny-title" style="background-color: #f6f6f6">
+                                    <div class="w3l-title-grids">
+                                        <div class="headerhny-left ml-2">
+                                            <h3 class="hny-title">Филми</h3>
+                                        </div>
+                                        <div class="button-center text-right mt-3 mb-3 mr-2">
+                                            <p class="btn view-button">
+                                                @Model.MoviesCount.Count()
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div style="display: flex;">
+                                    <div class="owl-three owl-carousel owl-theme">
+
+                                        @foreach (var item in Model.MoviesCount)
+                                        {
+                                            if (item != null)
+                                            {
+                                                <div style="width:200px;">
+                                                    <div class="item vhny-grid">
+                                                        <div class="box16 mb-0">
+                                                            <a asp-controller="Movie" asp-action="Details" asp-route-id="@item.Id">
+                                                                <figure>
+                                                                    <img class="img-genre" src="@Url.Content(item.ImageURL)" alt="">
+                                                                </figure>
+                                                                <div class="box-content">
+                                                                    <h4>
+                                                                        <span class="post">
+                                                                            <i class="fa fa-film"> </i> @item.Category
+
+                                                                        </span>
+
+                                                                        <span class="post fa fa-television text-right"></span>
+                                                                    </h4>
+                                                                </div>
+                                                                <span class="fa fa-shopping-cart" aria-hidden="true"></span>
+                                                            </a>
+                                                        </div>
+                                                        <h3> <a class="title-gd" href="~/Movie/Details/@item.Id">@item.Title</a></h3>
+                                                        
+                                                    </div>
+                                                </div>
+                                            }
+                                        }
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--grids-sec2-->
+
+    <section class="w3l-contact-1">
+        <div class="contacts-9 py-5">
+            <div class="container py-lg-4">
+                <div class="contact-view mt-lg-5 mt-4">
+                    @*<div class="conhny-form-section">
+                        <form action="#" method="post" class="formhny-sec">
+                            <div class="form-grids">
+                                <div class="form-input">
+                                    <input type="text" name="w3lName" id="w3lName" placeholder="Enter your name *" required="" />
+                                </div>
+                                <div class="form-input">
+                                    <input type="text" name="w3lSubject" id="w3lSubject" placeholder="Enter subject " required />
+                                </div>
+                                <div class="form-input">
+                                    <input type="email" name="w3lSender" id="w3lSender" placeholder="Enter your email *"
+                                           required />
+                                </div>
+                                <div class="form-input">
+                                    <input type="text" name="w3lPhone" id="w3lPhone" placeholder="Enter your Phone Number *"
+                                           required />
+                                </div>
+                            </div>
+                            <div class="form-input mt-4">
+                                <textarea name="w3lMessage" id="w3lMessage" placeholder="Type your query here"
+                                          required=""></textarea>
+                            </div>
+                            <div class="submithny text-right mt-4">
+                                <button class="btn read-button">Submit Message</button>
+                            </div>
+                        </form>
+                    </div>*@
+                    <section class="w3l-loginhny py-5">
+                        <div class="container py-lg-3">
+                            <div class="w3l-hny-login">
+                                <div class="w3l-hny-login-info" style="max-width:1500px;">
+                                    <div class="d-grid contact-addres-inf pt-lg-4">
+                                        <div class="headerhny-title text-center">
+                                            <h3 class="hny-title mb-0">Свържете се с нас</h3>
+                                            <p class="hny-title mb-lg-5 mb-4">Ако имате въпроси относно нашите услуги, не се колебайте да ни потърсите.</p>
+                                        </div>
+                                        <div class="contact-info-left d-grid">
+                                            <div class="contact-info">
+                                                <div class="icon">
+                                                    <span class="fa fa-location-arrow" aria-hidden="true"></span>
+                                                </div>
+                                                <div class="contact-details">
+                                                    <h4>Адрес:</h4>
+                                                    <p>бул. "Пещерско шосе" 26</p>
+                                                </div>
+                                            </div>
+                                            <div class="contact-info">
+                                                <div class="icon">
+                                                    <span class="fa fa-phone" aria-hidden="true"></span>
+                                                </div>
+                                                <div class="contact-details">
+                                                    <h4>Телефон:</h4>
+                                                    <p><a href="tel:0895825655">+359 89 582 5655</a></p>
+                                                </div>
+                                            </div>
+                                            <div class="contact-info">
+                                                <div class="icon">
+                                                    <span class="fa fa-envelope-open-o" aria-hidden="true"></span>
+                                                </div>
+                                                <div class="contact-details">
+                                                    <h4>Имейл:</h4>
+                                                    <p><a href="mailto:mail@example.com" class="email">snbmovies@abv.bg</a></p>
+                                                    <p><a href="mailto:mail@example.com" class="email">snbsupport@abv.bg</a></p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+        <div class="contact-map">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2958.4680711639676!2d24.728675199960556!3d42.140269518244715!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14acd1cc3a847e3d%3A0xd2e94589d06dd729!2z0J_RgNC-0YTQtdGB0LjQvtC90LDQu9C90LAg0LPQuNC80L3QsNC30LjRjyDQv9C-INC10LvQtdC60YLRgNC-0YLQtdGF0L3QuNC60LAg0Lgg0LXQu9C10LrRgtGA0L7QvdC40LrQsA!5e0!3m2!1sbg!2sbg!4v1680686674512!5m2!1sbg!2sbg" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+    </section>
+    <!-- /contact1 -->
+</body>
+
+</html>

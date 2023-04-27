@@ -1,0 +1,52 @@
+﻿@model Movie
+
+@{
+    ViewData["Title"] = "Delete movie";
+}
+
+<!--/breadcrumbs -->
+<div class="w3l-breadcrumbs">
+    <nav id="breadcrumbs" class="breadcrumbs">
+        <div class="container page-wrapper">
+            <a href="~/Home/Index">Начало</a> » <a href="~/Movie/Index"><span class="breadcrumb_last" aria-current="page">Филми</span></a> » <span class="breadcrumb_last" aria-current="page">Изтрий Филм</span>
+        </div>
+    </nav>
+</div>
+<!--//breadcrumbs -->
+<div class="row text">
+    <div class="col-md-8 offset-2">
+        <p>
+            <h2 class="text-center">Потвърждаване за изтриване на @Model.Title</h2>
+        </p>
+        <div class="row">
+            <div class="col-md-8 offset-2">
+                <div class="form-group text-center">
+                    <img class="border-info rounded-circle" style="max-width: 150px" src="@Url.Content(Model.ImageURL)" />
+                </div>
+                <div class="form-group">
+                    <label class="control-label"><i class="fa fa-file-picture-o"></i> Снимката</label>
+                    <input asp-for="ImageURL" class="form-control" readonly />
+                    <span asp-validation-for="ImageURL" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label class="control-label"><i class="fa fa-film"></i> Заглавие</label>
+                    <input asp-for="Title" class="form-control" readonly />
+                    <span asp-validation-for="Title" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label class="control-label"><i class="fa-audio-description"></i> Описание</label>
+                    <input asp-for="Description" class="form-control" readonly />
+                    <span asp-validation-for="Description" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <form asp-action="Delete">
+                        <input type="hidden" asp-for="Id" />
+                        <input type="submit" value="Потвърди" class="btn btn-danger float-right" />
+                    </form>
+                    <a class="btn btn-outline-secondary" asp-action="Index">Покажи всички</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,33 @@
+﻿<html>
+<body>
+    <!--/breadcrumbs -->
+    <div class="w3l-breadcrumbs">
+        <nav id="breadcrumbs" class="breadcrumbs">
+            <div class="container page-wrapper">
+                <a href="~/Home/Index">Home</a> » <span class="breadcrumb_last" aria-current="page">Успешна Регистрация</span>
+            </div>
+        </nav>
+    </div>
+    <!--//breadcrumbs -->
+    <section class="w3l-contact-1">
+        <div class="contacts-9 py-5">
+            <div class="container py-lg-4">
+                <div class="contact-view mt-lg-5 mt-4">
+                    <div class="row">
+                        <div class="col-md-6 offset-3 alert alert-success text-center">
+                            <h2>Акаунта ви беше създаден успешно!</h2>
+                            <p>Вече може да влизате в приложението с Вашия имейл и парола.</p>
+                            <hr />
+                            <p>Благодарим Ви!</p>
+                            <hr />
+                            <form asp-controller="Account" asp-action="Login">
+                                <button class="btn read-button btn-login" type="submit">Влез</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>

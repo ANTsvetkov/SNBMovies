@@ -1,0 +1,95 @@
+﻿@model SNBMovies.Models.ViewModels.MovieVMs.CreateMovieVM;
+@using SNBMovies.Data.Enums;
+@using SNBMovies.Data;
+
+@{
+    ViewData["Title"] = "Create a new movie";
+}
+
+<body>
+    <!--/breadcrumbs -->
+    <div class="w3l-breadcrumbs">
+        <nav id="breadcrumbs" class="breadcrumbs">
+            <div class="container page-wrapper">
+                <a href="~/Home/Index">Начало</a> » <a href="~/Movie/Index"><span class="breadcrumb_last" aria-current="page">Филми</span></a> » <span class="breadcrumb_last" aria-current="page">Създай филм</span>
+            </div>
+        </nav>
+    </div>
+    <!--//breadcrumbs -->
+
+    <section class="w3l-loginhny py-5">
+        <div class="container py-lg-3">
+            <div class="w3l-hny-login">
+                <div class="w3l-hny-login-info" style="max-width:700px;">
+                    <h1 class="text-center">Добави филм</h1>
+                    <div style="border-style:groove; border-radius:9px; border-color: deeppink;">
+                        <form asp-action="Create" method="post" class="text-left" enctype="multipart/form-data">
+                            <div class="text-danger" asp-validation-summary="ModelOnly"></div>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label class="control-label"> Заглавие</label>
+                                    <input asp-for="Title" class="form-control" />
+                                    <span asp-validation-for="Title" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label"> Цена</label>
+                                    <input asp-for="Price" class="form-control" />
+                                    <span asp-validation-for="Price" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label"> Постер</label>
+                                    <input asp-for="ImageURL" type="file" name="ImageURL" class="form-control" />
+                                    <span asp-validation-for="ImageURL" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label"> Файл на филм</label>
+                                    <input asp-for="MovieFile" type="file" name="MovieFile" class="form-control" />
+                                    <span asp-validation-for="MovieFile" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label"> Дата на излизане</label>
+                                    <input asp-for="ReleaseDate" type="date" class="form-control" />
+                                    <span asp-validation-for="ReleaseDate" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label"> Избери жанр</label>
+                                    <select asp-for="Genre" class="form-control" asp-items="Html.GetEnumSelectList<Genre>()"></select>
+                                    <span asp-validation-for="Genre" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label"> Избери категория</label>
+                                    <select asp-for="Category" class="form-control" asp-items="Html.GetEnumSelectList<Category>()"></select>
+                                    <span asp-validation-for="Category" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label"> Избери продуцент</label>
+                                    <select asp-for="ProducerId" class="form-control" asp-items="ViewBag.Producers"></select>
+                                    <span asp-validation-for="ProducerId" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label"> Избери актьор/и | (Ctrl + LMB)</label>
+                                    <select asp-for="ActorIds" class="form-control" asp-items="ViewBag.Actors" multiple></select>
+                                    <span asp-validation-for="ActorIds" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label class="control-label"> Описание на филм</label>
+                                    <textarea asp-for="Description" class="form-control"></textarea>
+                                    <span asp-validation-for="Description" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="submithny text-center mt-4">
+                                <button type="submit" class="btn read-button btn-login" style="margin-top:0px;">Добави</button>
+                            </div>
+                        </form>
+                    </div>
+                    <hr />
+                    <form asp-controller="Movie" asp-action="Index">
+                        <button type="submit" class="btn read-button btn-login" style="margin-top:0px;">Отказ</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>

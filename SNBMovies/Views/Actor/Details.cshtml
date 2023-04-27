@@ -1,0 +1,62 @@
+﻿@model Actor
+
+@{
+    ViewData["Title"] = "Details of the actor";
+}
+
+<!--/breadcrumbs -->
+<div class="w3l-breadcrumbs">
+    <nav id="breadcrumbs" class="breadcrumbs">
+        <div class="container page-wrapper">
+            <a href="index.html">Начало</a> » <a href="~/Actor/Index"><span class="breadcrumb_last" aria-current="page">Актьори</span></a> » <span class="breadcrumb_last" aria-current="page">Детайли за актьор</span>
+        </div>
+    </nav>
+</div>
+<!--//breadcrumbs -->
+<section class="w3l-loginhny py-5">
+    <div class="container py-lg-3">
+        <div class="w3l-hny-login">
+            <div class="w3l-hny-login-info" style="max-width:700px;">
+                <h1 class="text-center">Детайли за актьор</h1>
+                <div style="border-style:groove; border-radius:9px; border-color: deeppink;">
+                    <div class="form-group text-center">
+                        <img class="border-info rounded-circle" style="max-width: 150px" src="@Url.Content(Model.ProfilePictureURL)" />
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label class="control-label"> Снимка</label>
+                            <input asp-for="ProfilePictureURL" type="text" name="ProfilePictureURL" id="ProfilePictureURL" class="form-control" readonly />
+                            <span asp-validation-for="ProfilePictureURL" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label"> Име</label>
+                            <input asp-for="FullName" type="text" class="form-control" readonly />
+                            <span asp-validation-for="FullName" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label"> Биография</label>
+                            <input asp-for="Biography" type="text" class="form-control" readonly/>
+                            <span asp-validation-for="Biography" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <hr />
+                    @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+                    {
+                        <form asp-controller="Actor" asp-action="Update" asp-route-id="@Model.Id" method="get">
+                            <button type="submit" class="btn read-button btn-login" style="margin-top:0px;">Промени</button>
+                        </form>
+                        <hr />
+                        <form asp-controller="Actor" asp-action="Index">
+                            <button type="submit" class="btn read-button btn-login" style="margin-top:0px;">Отказ</button>
+                        </form>
+                    }
+                    else
+                    {
+                        <form asp-controller="Actor" asp-action="Index">
+                            <button type="submit" class="btn read-button btn-login" style="margin-top:0px;">Отказ</button>
+                        </form>
+                    }
+                </div>
+            </div>
+        </div>
+</section>

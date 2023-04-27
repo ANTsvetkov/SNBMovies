@@ -1,0 +1,111 @@
+﻿@model Movie
+
+@{
+    ViewData["Title"] = "Movie details";
+}
+<html lang="zxx" data-theme="light">
+<body>
+    <!--/breadcrumbs -->
+    <div class="w3l-breadcrumbs">
+        <nav id="breadcrumbs" class="breadcrumbs">
+            <div class="container page-wrapper">
+                <a href="~/Home/Index">Начало</a> » <a href="~/Movie/Index"><span class="breadcrumb_last" aria-current="page">Филми</span></a> » <span class="breadcrumb_last" aria-current="page">Информация</span>
+            </div>
+        </nav>
+    </div>
+    <!--//breadcrumbs -->
+    <!--/genre-single-->
+    <section class="w3l-text-8 genre-single">
+        <div class="container py-5">
+            <div class="d-grid-1 py-lg-4">
+                <div class="text">
+                    <h6 class="text-logo">SNBMovies</h6>
+                    <h3 class="hny-title"><i class="fa fa-info-circle"></i> Информация за "@Model.Title"</h3>
+                    <p>
+                        <b>Описание: </b>
+                        @Model.Description
+                    </p>
+
+                    <div class="genre-single-page my-lg-5 my-4">
+                        <div class="row ab-grids-sec align-items-center">
+                            <div class="col-lg-4 gen-right">
+                                <img class="img-fluid rounded-end" src="@Url.Content(Model.ImageURL)" alt="Movie Image">
+                            </div>
+                            <div class="col-lg-8 gen-left pl-lg-4 mt-lg-0 mt-5">
+
+                                <h3 class="hny-title">@Model.Title</h3>
+                                <p class="mt-2">
+                                    <b><i class="fa fa-user-o"></i> Продуцент: </b>
+                                    <a asp-controller="Producer" asp-action="Details" asp-route-id="@Model.ProducerId">
+                                        @Model.Producer.FullName
+                                    </a>
+                                </p>
+                                <ul class="admin-post mt-1">
+                                    <li>
+                                        <p><span class="fa fa-clock-o"></span> @Model.ReleaseDate</p>
+                                    </li>
+                                    <li>
+                                        <p><span class="fa fa-film"></span> @Model.Genre</p>
+                                    </li>
+                                    <li>
+                                        <p>
+                                            <b>Категория: </b>
+                                            @if (Model.Category.ToString() == "New")
+                                            {
+                                                <span class="badge bg-success text-white">Нов</span>
+                                            }
+                                            else if (Model.Category.ToString() == "Popular")
+                                            {
+                                                <span class="badge bg-warning  text-white">Популярен</span>
+                                            }
+                                            else
+                                            {
+                                                <span class="badge bg-primary text-white">Пепоръчителен</span>
+                                            }
+                                        </p>
+                                    </li>
+                                </ul>
+                                <div class="share-more d-flex mt-4 text-center">
+                                    <form asp-action="AddToCart" asp-controller="ShoppingCart" asp-route-id="@Model.Id">
+                                        <button class="btn read-button"><i class="fa fa-shopping-bag"></i> @Model.Price лв</button>
+                                    </form>
+                                    @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+                                    {
+                                        <div class="ml-2">
+                                            <a class="btn btn-outline-danger" asp-action="Update" asp-route-id="@Model.Id"><i class="fa fa-pencil"></i> Промени</a>
+                                            <br>
+                                            <a class="btn btn-outline-danger" asp-action="Delete" asp-route-id="@Model.Id"><i class="fa fa-trash"></i> Изтрий</a>
+                                        </div>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="genre-single-page mb-lg-5 mb-4">
+                        <div class="row ab-grids-sec">
+                            <b><i class="fa fa-users "></i> Актьори: </b>
+                            <div class="row">
+                                @foreach (var actor in Model.Actor_Movie)
+                                {
+                                    <div class="column text-center align-center ">
+                                        <img class="border-info rounded-circle" src="@Url.Content(actor.Actor.ProfilePictureURL)" style="max-width: 80%" />
+                                        <br />
+                                        <a asp-controller="Actor" asp-action="Details" asp-route-id="@actor.ActorId">@actor.Actor.FullName</a>
+                                        <br />
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                        <div class="w3l-about4" id="about">
+                            <audio>
+                                <source src="~/MovieFiles/Scream6.mov"/>
+                            </audio>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--//genre-single-->
+</body>
+</html>

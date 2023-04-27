@@ -1,0 +1,61 @@
+﻿@inject Microsoft.AspNetCore.Identity.UserManager<SNBMovies.Models.ApplicationUser> UserManager
+@if (!User.Identity.IsAuthenticated)
+{
+    <div class="dropdown">
+        <a class="dropdown-toggle nav-link" type="button" data-toggle="dropdown">
+            <i class="fa fa-user-circle"></i> Акаунт
+        </a>
+        <ul class="dropdown-menu">
+            <li>
+                <a class="dropdown-item" asp-controller="Account" asp-action="Login">
+                    <i class="fa fa-sign-in"></i> Вход
+                </a>
+            </li>
+            <li>
+                <a class="dropdown-item" asp-controller="Account" asp-action="Register">
+                    <i class="fa fa-sign-in"></i> Регистрация
+                </a>
+            </li>
+        </ul>
+    </div>
+}
+else
+{
+    <!--Потребителска секция-->
+    <div class="dropdown">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="dropdown-toggle nav-link" type="button" data-toggle="dropdown">
+                     @UserManager.GetUserName(User)
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="profile-btn">
+                    @if (User.IsInRole("Admin"))
+                    {
+                        <li class="">
+                            <a class="dropdown-item align-center text-center" asp-controller="Account" asp-action="Index">
+                                <i class="fa fa-users"></i> Потребители
+                            </a>
+                        </li>
+                    }
+                    <li>
+                        <a class="dropdown-item align-center text-center" asp-controller="Account" asp-action="UserProfile">
+                            <i class="fa fa-user"></i> Профил
+                        </a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item align-center text-center" asp-controller="ShoppingCart" asp-action="Index">
+                            <i class="fa fa-archive"></i> Покупки
+                        </a>
+                    </li>
+                    <li class="">
+                        <form asp-controller="Account" asp-action="Logout">
+                            <button class="dropdown-item btn btn-outline-dark align-center text-center" type="submit">
+                                <i class="fa fa-sign-out "></i> Изход
+                            </button>
+                        </form>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+}

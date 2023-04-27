@@ -1,0 +1,89 @@
+﻿@model IEnumerable<ApplicationUser>
+
+@{
+    ViewData["Title"] = "List of all users";
+}
+<body>
+	<!--/breadcrumbs -->
+	<div class="w3l-breadcrumbs">
+		<nav id="breadcrumbs" class="breadcrumbs">
+			<div class="container page-wrapper">
+				<a href="~/Home/Index">Начало</a> » <span class="breadcrumb_last" aria-current="page">Потребители</span>
+			</div>
+		</nav>
+	</div>
+	<!--//breadcrumbs -->
+    <section class="w3l-loginhny py-5">
+        <div class="container py-lg-3">
+            <div class="w3l-hny-login">
+                <div class="w3l-hny-login-info" style="max-width:1000px;">
+                    <h1 class="text-center">Всички потребители</h1>
+                    <div class="search-top">
+                        <form asp-action="Search" asp-controller="Account" class="" style="display: flex; justify-content:center; margin-top:20px; margin-bottom:5px">
+                            <input name="searchTerm" type="text" class="form-control" style="margin-left:220px;" placeholder="Име на потребител..." />
+                            <button class="btn btn-primary my-2 my-sm-0" style="margin-right:220px;" type="submit"><i class="fa fa-search"></i></button>
+                        </form>
+                    </div>
+                    <div style="border-style:groove; border-radius:9px; border-color: deeppink;">
+                        <table class="table">
+                            <thead>
+                                <tr class="text-center">
+                                    <th>Име</th>
+                                    <th>Имейл</th>
+                                    <th>Потвърден имейл</th>
+                                    <th>Телефон</th>
+                                    @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+                                    {
+                                        <th>Действиe</th>
+                                    }
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td class="align-middle">
+                                            @item.FullName
+                                        </td>
+                                        <td class="align-middle">
+                                            @item.Email
+                                        </td>
+                                        <td class="align-middle">
+                                            @if (item.EmailConfirmed)
+                                            {
+                                                <p class="text-center">Да</p>
+                                            }
+                                            else
+                                            {
+                                                <p class="text-center">Не</p>
+                                            }
+                                        </td>
+                                        <td class="align-middle">
+                                            @item.PhoneNumber
+                                        </td>
+                                        @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+                                        {
+                                            <td class="align-middle">
+                                                <form asp-action="Delete" asp-route-id="@item.Id">
+                                                    <button type="submit" class="btn btn-outline-danger">
+                                                        <i class="fa fa-trash"></i> Изтрий
+                                                    </button>
+                                                </form>
+                                            </td>
+                                        }
+
+                                    </tr>
+                                }
+                            </tbody>
+
+                        </table>
+                    </div>
+                    <hr />
+                    <form asp-controller="ShoppingCart" asp-action="Index">
+                        <button type="submit" class="btn read-button btn-login" style="margin-top:0px;">Покупки</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>

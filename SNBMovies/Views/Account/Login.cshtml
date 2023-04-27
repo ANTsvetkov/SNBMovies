@@ -1,0 +1,51 @@
+﻿@using SNBMovies.Models.ViewModels;
+@model LoginVM;
+
+@{
+    ViewData["Title"] = "Log in to your account";
+}
+
+<!doctype html>
+<html lang="zxx">
+<body>
+    <!--/breadcrumbs -->
+    <div class="w3l-breadcrumbs">
+        <nav id="breadcrumbs" class="breadcrumbs">
+            <div class="container page-wrapper">
+                <a href="~/Home/Index">Начало</a> » <span class="breadcrumb_last" aria-current="page">Вход</span>
+            </div>
+        </nav>
+    </div>
+    <!--//breadcrumbs -->
+
+    <section class="w3l-loginhny py-5">
+        <div class="container py-lg-3">
+            <div class="w3l-hny-login">
+                <div class="w3l-hny-login-info">
+                    <h2>Вход към акаунт</h2>
+                    <form asp-action="Login" method="post">
+                        <label>Имейл</label>
+                        <div class="input-group">
+                            <input asp-for="EmailAddress" type="email" name="EmailAddress" placeholder="" required="" autofocus="" fdprocessedid="n8z3l">
+                            @if (TempData["ErrorEmail"] != null && TempData["ErrorLocation"].ToString() == "email")
+                            {
+                                <span class="text-danger">@TempData["ErrorEmail"]</span>
+                            }
+                        </div>
+                        <label>Парола</label>
+                        <div class="input-group">
+                            <input asp-for="Password" type="Password" name="Password" placeholder="" required="" fdprocessedid="1mhd3p">
+                            @if (TempData["ErrorPass"] != null && TempData["ErrorLocation"].ToString() == "pass")
+                            {
+                                    <span class="text-danger">@TempData["ErrorPass"]</span>
+                            }
+                        </div>
+                        <button class="btn read-button btn-login" type="submit" fdprocessedid="bxoc1">Вход</button>
+                    </form>
+                    <p class="account1">Нямаш акаунт? <a asp-controller="Account" asp-action="Register">Регистирай се</a></p>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>

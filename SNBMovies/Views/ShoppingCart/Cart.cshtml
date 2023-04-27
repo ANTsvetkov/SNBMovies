@@ -1,0 +1,144 @@
+﻿@model SNBMovies.Models.ViewModels.ShoppingCart.ShoppingCartVM
+
+@{
+    ViewData["Title"] = "Shopping cart summary";
+}
+
+<!--/breadcrumbs -->
+<div class="w3l-breadcrumbs">
+    <nav id="breadcrumbs" class="breadcrumbs">
+        <div class="container page-wrapper">
+            <a href="~/Home/Index">Начало</a> » <span class="breadcrumb_last" aria-current="page">Кошница</span>
+        </div>
+    </nav>
+</div>
+<!--//breadcrumbs -->
+<section class="w3l-loginhny py-5">
+    <div class="container py-lg-3">
+        <div class="w3l-hny-login">
+            <div class="w3l-hny-login-info" style="max-width:2200px;">
+                <div style="border-style:groove; border-radius:9px; border-color: deeppink;">
+                    <div class="row">
+                        <div class="col-md-8 offset-2">
+                            @if (Model.ShoppingCartItems.Count() > 0)
+                            {
+                                if (Model.ShoppingCartItems.Count() == 1)
+                                {
+                                    <div class="text-center">
+                                    <h2>В количката имате @Model.ShoppingCartItems.Count() филм.</h2>
+                                    </div>
+                                }
+                                else
+                                {
+                                    <div class="text-center">
+                                        <h2>В количката имате @Model.ShoppingCartItems.Count() филмa.</h2>
+                                    </div>
+                                }
+
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>Филм</th>
+                                            <th>Цена</th>
+                                            <th>Крайна цена</th>
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (var item in Model.ShoppingCartItems)
+                                        {
+                                            <tr>
+                                                <td class="align-middle">@item.Movie.Title</td>
+                                                <td class="align-middle">@item.Movie.Price лв</td>
+                                                <td class="align-middle">@item.Movie.Price лв</td>
+                                                <td class="align-middle">
+                                                    <form asp-controller="ShoppingCart" asp-action="RemoveFromCart" asp-route-id="@item.Movie.Id">
+                                                        <button type="submit" class="btn btn-outline-danger"><i class="fa fa-trash"></i></button>
+                                                    </form>
+                                                </td>
+                                            </tr>
+                                        }
+                                    </tbody>
+                                    <tfoot>
+                                        <tr>
+                                            <td colspan="2"></td>
+                                            <td><b>Общо:</b></td>
+                                            <td>
+                                                @Math.Round(Model.TotalPrice, 2) лв
+                                            </td>
+                                        </tr>
+                                    </tfoot>
+                                </table>
+
+                                <div class="text-right">
+                                    <div class="btn-group">
+                                        <div id="paypal-btn"></div>
+                                    </div>  
+                                </div>
+                            }
+                            else
+                            {
+                                <div>
+                                    <p class="text-center" style="font-size:30px;color:black">Количката е празна!</p>
+                                </div>
+                            }
+
+                        </div>
+                    </div>
+                </div>
+                <hr />
+                <form asp-controller="Movie" asp-action="Index">
+                    <button type="submit" class="btn read-button btn-login" style="margin-top:0px;">Добави</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!--
+    PayPal Test Account Info:
+    E-mail: sb-ougyd25377302@personal.example.com
+    Password: UxPFZ%=2
+-->
+@section Scripts{
+
+    <script src="https://www.paypalobjects.com/api/checkout.js"></script>
+
+    <script>
+        let _total = '@Math.Round(Model.TotalPrice, 2)';
+        paypal.Button.render({
+            //Конфигуриране на "sandbox" средата
+            env: 'sandbox',
+            client: {
+                sandbox: 'AYstpijnkcvCnh3cWicOmjLLsZpRrYMxcio6JXfQfR_yNI55NF9wmAD2nn-nwoqxHmAFYykpG71TnfAb'
+            },
+            //Персонализациране на бутона
+            locale: 'en_US',
+            style: {
+                size: 'medium',
+                color: 'gold',
+                shape: 'rect'
+            },
+            commit: true,
+            //Настройка на плащането
+            payment: function (data, actions) {
+                return actions.payment.create({
+                    transactions: [{
+                        amount: {
+                            total: _total,
+                            currency: 'EUR'
+                        }
+                    }]
+                });
+            },
+            //Извършване на плащането и пренасочване към страница за успещна покупка
+            onAuthorize: function (data, actions) {
+                return actions.payment.execute().then(function () {
+                    var url = '@Url.Action("CompleteOrder", "ShoppingCart", new { })';
+                    window.location.href = url;
+                });
+            }
+        }, '#paypal-btn');
+    </script>
+}

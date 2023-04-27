@@ -1,0 +1,48 @@
+﻿@model List<ShoppingCartItem>
+
+<!--/breadcrumbs -->
+<div class="w3l-breadcrumbs">
+    <nav id="breadcrumbs" class="breadcrumbs">
+        <div class="container page-wrapper">
+            <a href="~/Home/Index">Начало</a> » <span class="breadcrumb_last" aria-current="page">Кошница</span> » <span class="breadcrumb_last" aria-current="page">Завършена поръчка!</span>
+        </div>
+    </nav>
+</div>
+<!--//breadcrumbs -->
+
+<div class="row">
+    <div class="col-md-6 offset-3 alert alert-success text-center">
+        <h2>Вашата поръчка е завършена успешно!</h2>
+        <p>Можете да видите Вашите покупки в секцията във Вашия профил.</p>
+        <hr />
+        @if (User.Identity.IsAuthenticated)
+        {
+            <p>Кликнете върху бутона, за да изтеглите филма</p>
+            @foreach (var movie in Model)
+            {
+                <form asp-controller="ShoppingCart" asp-action="Download" method="post">
+                    <input type="hidden" name="id" value="@movie.Movie.Id" />
+                    <button class="btn btn-outline-success" type="submit">Изтегли @movie.Movie.Title</button>
+                </form>
+                <br />
+            }
+        }
+        else
+        {
+            if (User.Identity.IsAuthenticated)
+            {
+                <p>За да изтеглите филмите, трябва да ги закупите.</p>
+            }
+            else
+            {
+                <p>За да изтеглите филмите, трябва да бъдете влезли в системата и да ги закупите.</p>
+            }
+        }
+        <hr />
+        <form asp-controller="Home" asp-action="Index">
+            <button class="btn btn-outline-info" type="submit">Начало!</button>
+        </form>
+        <hr />
+        <p>Благодарим Ви!</p>
+    </div>
+</div>

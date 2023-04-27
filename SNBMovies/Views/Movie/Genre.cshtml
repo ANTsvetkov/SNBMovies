@@ -1,0 +1,377 @@
+﻿@model IEnumerable<Movie>
+<!doctype html>
+<html lang="zxx">
+<body>
+    <!--/breadcrumbs -->
+    <div class="w3l-breadcrumbs">
+        <nav id="breadcrumbs" class="breadcrumbs">
+            <div class="container page-wrapper">
+                <a href="~/Home/Index">Начало</a> » <span class="breadcrumb_last" aria-current="page">Жанрове</span>
+            </div>
+        </nav>
+    </div>
+    <!--//breadcrumbs -->
+    <!--/genre -->
+    <!--grids-sec-action-->
+    <section class="w3l-grids">
+        <div class="grids-main py-5">
+            <div class="container py-lg-3">
+                <div class="headerhny-title" style="background-color: #f6f6f6">
+                    <div class="w3l-title-grids">
+                        <div class="headerhny-left ml-2">
+                            <h3 class="hny-title">Екшън</h3>
+                        </div>
+                        <div class="button-center text-right mt-3 mb-3 mr-2">
+                            <p class="btn view-button">
+                                @Model.Where(m=>m.Genre.ToString() == "Action").Count()
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="display: flex;">
+                    <div class="owl-three owl-carousel owl-theme">
+
+                        @foreach (var item in Model)
+                        {
+                            if (item.Genre.ToString() == "Action")
+                            {
+                                <div style="width:220px;">
+                                    <div class="item vhny-grid">
+                                        <div class="box16 mb-0">
+                                            <a asp-controller="Movie" asp-action="Details" asp-route-id="@item.Id">
+                                                <figure>
+                                                    <img class="img-genre" src="@Url.Content(item.ImageURL)" alt="">
+                                                </figure>
+                                                <div class="box-content">
+                                                    <h4>
+                                                        <span class="post">
+                                                            <i class="fa fa-film"> </i> @item.Category
+
+                                                        </span>
+
+                                                        <span class="post fa fa-television text-right"></span>
+                                                    </h4>
+                                                </div>
+                                                <span class="fa fa-shopping-cart" aria-hidden="true"></span>
+                                            </a>
+                                        </div>
+                                        <h3> <a class="title-gd" href="~/Movie/Details/@item.Id">@item.Title</a></h3>
+                                        <div class="button-center text-center mt-4">
+                                            <a href="~/Movie/Details/@item.Id" class="btn watch-button"><i class=" fa fa-shopping-bag"></i> Купи</a>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            }
+                        }
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--//grids-sec-action-->
+    <!--grids-sec-thriller-->
+    <section class="w3l-grids">
+        <div class="grids-main py-5">
+            <div class="container py-lg-3">
+                <div class="headerhny-title" style="background-color: #f6f6f6">
+                    <div class="w3l-title-grids">
+                        <div class="headerhny-left ml-2">
+                            <h3 class="hny-title">Трилър</h3>
+                        </div>
+                        <div class="button-center text-right mt-3 mb-3 mr-2">
+                            <p class="btn view-button">
+                                @Model.Where(m=>m.Genre.ToString() == "Thriller").Count()
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="display: flex">
+                    <div class="owl-three owl-carousel owl-theme">
+
+                        @foreach (var item in Model)
+                        {
+                            if (item.Genre.ToString() == "Thriller")
+                            {
+                                <div style="width:220px">
+                                    <div class="item vhny-grid">
+                                        <div class="box16 mb-0">
+                                            <a asp-controller="Movie" asp-action="Details" asp-route-id="@item.Id">
+                                                <figure>
+                                                    <img class="img-fluid" src="@Url.Content(item.ImageURL)" alt="">
+                                                </figure>
+                                                <div class="box-content">
+                                                    <h4>
+                                                        <span class="post">
+                                                            <i class="fa fa-film"> </i> @item.Category
+
+                                                        </span>
+
+                                                        <span class="post fa fa-television text-right"></span>
+                                                    </h4>
+                                                </div>
+                                                <span class="fa fa-shopping-cart" aria-hidden="true"></span>
+                                            </a>
+                                        </div>
+                                        <h3> <a class="title-gd" href="~/Movie/Details/@item.Id">@item.Title</a></h3>
+                                        <div class="button-center text-center mt-4">
+                                            <a href="~/Movie/Details/@item.Id" class="btn watch-button"><i class=" fa fa-shopping-bag"></i> Купи</a>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            }
+                        }
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--//grids-sec-thriller-->
+    <!--grids-sec-comedy-->
+    <section class="w3l-grids">
+        <div class="grids-main py-5">
+            <div class="container py-lg-3">
+                <div class="headerhny-title" style="background-color: #f6f6f6">
+                    <div class="w3l-title-grids">
+                        <div class="headerhny-left ml-2">
+                            <h3 class="hny-title">Комедия</h3>
+                        </div>
+                        <div class="button-center text-right mt-3 mb-3 mr-2">
+                            <p class="btn view-button">
+                                @Model.Where(m=>m.Genre.ToString() == "Comedy").Count()
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="display: flex">
+                    <div class="owl-three owl-carousel owl-theme">
+
+                        @foreach (var item in Model)
+                        {
+                            if (item.Genre.ToString() == "Comedy")
+                            {
+                                <div style="width:220px">
+                                    <div class="item vhny-grid">
+                                        <div class="box16 mb-0">
+                                            <a asp-controller="Movie" asp-action="Details" asp-route-id="@item.Id">
+                                                <figure>
+                                                    <img class="img-fluid" src="@Url.Content(item.ImageURL)" alt="">
+                                                </figure>
+                                                <div class="box-content">
+                                                    <h4>
+                                                        <span class="post">
+                                                            <i class="fa fa-film"> </i> @item.Category
+
+                                                        </span>
+
+                                                        <span class="post fa fa-television text-right"></span>
+                                                    </h4>
+                                                </div>
+                                                <span class="fa fa-shopping-cart" aria-hidden="true"></span>
+                                            </a>
+                                        </div>
+                                        <h3> <a class="title-gd" href="~/Movie/Details/@item.Id">@item.Title</a></h3>
+                                        <div class="button-center text-center mt-4">
+                                            <a href="~/Movie/Details/@item.Id" class="btn watch-button"><i class=" fa fa-shopping-bag"></i> Купи</a>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            }
+                        }
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--//grids-sec-comedy-->
+    <!--grids-sec-drama-->
+    <section class="w3l-grids">
+        <div class="grids-main py-5">
+            <div class="container py-lg-3">
+                <div class="headerhny-title" style="background-color: #f6f6f6">
+                    <div class="w3l-title-grids">
+                        <div class="headerhny-left ml-2">
+                            <h3 class="hny-title">Драма</h3>
+                        </div>
+                        <div class="button-center text-right mt-3 mb-3 mr-2">
+                            <p class="btn view-button">
+                                @Model.Where(m=>m.Genre.ToString() == "Drama").Count()
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="display: flex">
+                    <div class="owl-three owl-carousel owl-theme">
+
+                        @foreach (var item in Model)
+                        {
+                            if (item.Genre.ToString() == "Drama")
+                            {
+                                <div style="width:220px">
+                                    <div class="item vhny-grid">
+                                        <div class="box16 mb-0">
+                                            <a asp-controller="Movie" asp-action="Details" asp-route-id="@item.Id">
+                                                <figure>
+                                                    <img class="img-fluid" src="@Url.Content(item.ImageURL)" alt="">
+                                                </figure>
+                                                <div class="box-content">
+                                                    <h4>
+                                                        <span class="post">
+                                                            <i class="fa fa-film"> </i> @item.Category
+
+                                                        </span>
+
+                                                        <span class="post fa fa-television text-right"></span>
+                                                    </h4>
+                                                </div>
+                                                <span class="fa fa-shopping-cart" aria-hidden="true"></span>
+                                            </a>
+                                        </div>
+                                        <h3> <a class="title-gd" href="~/Movie/Details/@item.Id">@item.Title</a></h3>
+                                        <div class="button-center text-center mt-4">
+                                            <a href="~/Movie/Details/@item.Id" class="btn watch-button"><i class=" fa fa-shopping-bag"></i> Купи</a>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            }
+                        }
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--//grids-sec-drama-->
+    <!--grids-sec-fantasy-->
+    <section class="w3l-grids">
+        <div class="grids-main py-5">
+            <div class="container py-lg-3">
+                <div class="headerhny-title" style="background-color: #f6f6f6">
+                    <div class="w3l-title-grids">
+                        <div class="headerhny-left ml-2">
+                            <h3 class="hny-title">Фантастика</h3>
+                        </div>
+                        <div class="button-center text-right mt-3 mb-3 mr-2">
+                            <p class="btn view-button">
+                                @Model.Where(m=>m.Genre.ToString() == "Fantasy").Count()
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="display: flex">
+                    <div class="owl-three owl-carousel owl-theme">
+
+                        @foreach (var item in Model)
+                        {
+                            if (item.Genre.ToString() == "Fantasy")
+                            {
+                                <div style="width:220px">
+                                    <div class="item vhny-grid">
+                                        <div class="box16 mb-0">
+                                            <a asp-controller="Movie" asp-action="Details" asp-route-id="@item.Id">
+                                                <figure>
+                                                    <img class="img-fluid" src="@Url.Content(item.ImageURL)" alt="">
+                                                </figure>
+                                                <div class="box-content">
+                                                    <h4>
+                                                        <span class="post">
+                                                            <i class="fa fa-film"> </i> @item.Category
+
+                                                        </span>
+
+                                                        <span class="post fa fa-television text-right"></span>
+                                                    </h4>
+                                                </div>
+                                                <span class="fa fa-shopping-cart" aria-hidden="true"></span>
+                                            </a>
+                                        </div>
+                                        <h3> <a class="title-gd" href="~/Movie/Details/@item.Id">@item.Title</a></h3>
+                                        <div class="button-center text-center mt-4">
+                                            <a href="~/Movie/Details/@item.Id" class="btn watch-button"><i class=" fa fa-shopping-bag"></i> Купи</a>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            }
+                        }
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--//grids-sec-fantasy-->
+    <!--grids-sec-adventure-->
+    <section class="w3l-grids">
+        <div class="grids-main py-5">
+            <div class="container py-lg-3">
+                <div class="headerhny-title" style="background-color: #f6f6f6">
+                    <div class="w3l-title-grids">
+                        <div class="headerhny-left ml-2">
+                            <h3 class="hny-title">Приключески</h3>
+                        </div>
+                        <div class="button-center text-right mt-3 mb-3 mr-2">
+                            <p class="btn view-button">
+                                @Model.Where(m=>m.Genre.ToString() == "Adventure").Count()
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="display: flex">
+                    <div class="owl-three owl-carousel owl-theme">
+
+                        @foreach (var item in Model)
+                        {
+                            if (item.Genre.ToString() == "Adventure")
+                            {
+                                <div style="width:220px">
+                                    <div class="item vhny-grid">
+                                        <div class="box16 mb-0">
+                                            <a asp-controller="Movie" asp-action="Details" asp-route-id="@item.Id">
+                                                <figure>
+                                                    <img class="img-fluid" src="@Url.Content(item.ImageURL)" alt="">
+                                                </figure>
+                                                <div class="box-content">
+                                                    <h4>
+                                                        <span class="post">
+                                                            <i class="fa fa-film"> </i> @item.Category
+
+                                                        </span>
+
+                                                        <span class="post fa fa-television text-right"></span>
+                                                    </h4>
+                                                </div>
+                                                <span class="fa fa-shopping-cart" aria-hidden="true"></span>
+                                            </a>
+                                        </div>
+                                        <h3> <a class="title-gd" href="~/Movie/Details/@item.Id">@item.Title</a></h3>
+                                        <div class="button-center text-center mt-4">
+                                            <a href="~/Movie/Details/@item.Id" class="btn watch-button"><i class=" fa fa-shopping-bag"></i> Купи</a>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            }
+                        }
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--//grids-sec-adventure-->
+    <!--//genre -->
+</body>
+</html>

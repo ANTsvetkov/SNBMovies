@@ -1,0 +1,71 @@
+﻿@model SNBMovies.Models.ViewModels.ShoppingCart.OrderHistoryVM
+
+
+<!--/breadcrumbs -->
+<div class="w3l-breadcrumbs">
+    <nav id="breadcrumbs" class="breadcrumbs">
+        <div class="container page-wrapper">
+            <a href="~/Home/Index">Начало</a> » <span class="breadcrumb_last" aria-current="page">Кошница</span>
+        </div>
+    </nav>
+</div>
+<!--//breadcrumbs -->
+
+<section class="w3l-loginhny py-5">
+    <div class="container py-lg-3">
+        <div class="w3l-hny-login">
+            <div class="w3l-hny-login-info" style="max-width:1100px;">
+                @if (Model.OrderHistoryItems.Count() > 0)
+                {
+                    <h2>История на покупките</h2>
+                    <div style="border-style:groove; border-radius:9px; border-color: deeppink;">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th class="text-center">ID на покупка</th>
+                                    <th class="text-center">Дата на закуване</th>
+                                    <th class="text-center">Филм</th>
+                                    <th class="text-center">Цена</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var order in Model.OrderHistoryItems)
+                                {
+                                    <tr>
+                                        <td class="align-middle">@order.OrderId</td>
+                                        <td class="align-middle">@order.PurchaseDate.ToString("dd.MM.yyyyг.")</td>
+                                        <td class="align-middle">
+                                            <ul style="list-style-type:none">
+                                                <li>
+                                                    <form asp-controller="ShoppingCart" asp-action="Download" method="post">
+
+                                                        <div class="alert alert-info text-center" role="alert">
+                                                            <input type="hidden" name="id" value="@order.Movie.Id" />
+                                                            <button class="btn btn-outline-dark" type="submit">@order.Movie.Title</button>
+                                                        </div>
+                                                    </form>
+
+                                                </li>
+                                            </ul>
+                                        </td>
+                                        <td class="align-middle">@order.Price лв</td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                }
+                else
+                {
+                    <div class="text-center">
+                        <h2>Нямате покупки!</h2>
+                    </div>
+                }
+                <hr />
+                <form asp-controller="Movie" asp-action="Index">
+                    <button type="submit" class="btn read-button btn-login" style="margin-top:0px;">Купи филм</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>

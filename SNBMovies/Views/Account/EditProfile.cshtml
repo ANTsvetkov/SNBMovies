@@ -1,0 +1,42 @@
+﻿@model SNBMovies.Models.ViewModels.EditProfileVM
+
+<!--/breadcrumbs -->
+<div class="w3l-breadcrumbs">
+    <nav id="breadcrumbs" class="breadcrumbs">
+        <div class="container page-wrapper">
+            <a href="~/Home/Index">Начало</a> » <span class="breadcrumb_last" aria-current="page">Профил</span>
+        </div>
+    </nav>
+</div>
+<!--//breadcrumbs -->
+
+<section class="w3l-loginhny py-5">
+    <div class="container py-lg-3">
+        <div class="w3l-hny-login">
+            <div class="w3l-hny-login-info" style="max-width:700px;">
+                <h2>Промяна на информацията!</h2>
+                <form asp-action="EditProfile" asp-controller="Account" method="post">
+                    <div style="border-style:groove; border-radius:9px; border-color: deeppink;">
+                        <label class="col-5">Име:</label>
+                        <div class="input-group col-12">
+                            <input asp-for="FullName" type="text" name="FullName" placeholder="" required="" autofocus="" fdprocessedid="n8z3l">
+                        </div>
+                        <label class="col-5">Имейл:</label>
+                        <div class="input-group col-12">
+                            <input asp-for="EmailAddress" type="email" name="EmailAddress" placeholder="" required="" autofocus="" fdprocessedid="n8z3l">
+                        </div>
+                        <label class="col-5">Телефонен номер:</label>
+                        <div class="input-group col-12">
+                            <input asp-for="PhoneNumber" type="text" name="PhoneNumber" placeholder="" required="" autofocus="" fdprocessedid="n8z3l">
+                        </div>
+                        <button type="submit" class="btn read-button btn-login">Промени</button>
+                    </div>
+                </form>
+                <hr />
+                <form asp-controller="Account" asp-action="UserProfile">
+                    <button type="submit" class="btn read-button btn-login" style="margin-top:0px;">Отказ</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
