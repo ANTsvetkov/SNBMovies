@@ -50,25 +50,36 @@
                                     <li>
                                         <p>
                                             <b>Категория: </b>
-                                            @if (Model.Category.ToString() == "New")
+                                            @if (Model.Category.ToString() == "Нов")
                                             {
                                                 <span class="badge bg-success text-white">Нов</span>
                                             }
-                                            else if (Model.Category.ToString() == "Popular")
+                                            else if (Model.Category.ToString() == "Популярен")
                                             {
                                                 <span class="badge bg-warning  text-white">Популярен</span>
                                             }
-                                            else
+                                            else if (Model.Category.ToString() == "Препоръчителен")
                                             {
                                                 <span class="badge bg-primary text-white">Пепоръчителен</span>
+                                            }
+                                            else
+                                            {
+                                                <span class="badge bg-info text-white">Предстоящ</span>
                                             }
                                         </p>
                                     </li>
                                 </ul>
                                 <div class="share-more d-flex mt-4 text-center">
-                                    <form asp-action="AddToCart" asp-controller="ShoppingCart" asp-route-id="@Model.Id">
-                                        <button class="btn read-button"><i class="fa fa-shopping-bag"></i> @Model.Price лв</button>
-                                    </form>
+                                    @if (!(Model.Category == SNBMovies.Data.Enums.Category.Предстоящ))
+                                    {
+                                        <form asp-action="AddToCart" asp-controller="ShoppingCart" asp-route-id="@Model.Id">
+                                            <button class="btn read-button"><i class="fa fa-shopping-bag"></i> @Model.Price лв</button>
+                                        </form>
+                                    }
+                                    else
+                                    {
+                                        <span class="bg-info text-white text-center align-center"><i class="fa fa-warning"></i> Филмът все още не е наличен!</span>
+                                    }
                                     @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
                                     {
                                         <div class="ml-2">
@@ -98,7 +109,7 @@
                         </div>
                         <div class="w3l-about4" id="about">
                             <audio>
-                                <source src="~/MovieFiles/Scream6.mov"/>
+                                <source src="~/MovieFiles/Scream6.mov" />
                             </audio>
                         </div>
                     </div>

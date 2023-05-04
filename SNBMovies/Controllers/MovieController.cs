@@ -270,7 +270,6 @@ namespace SNBMovies.Controllers
             return View("Index", results);
             //Изглед с резултата.
         }
-
     }
 
 }

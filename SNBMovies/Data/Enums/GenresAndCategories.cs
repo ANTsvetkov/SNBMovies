@@ -2,18 +2,18 @@
 {
     public enum Genre
     {
-        Action = 1,
-        Comedy,
-        Drama,
-        Fantasy,
-        Thriller,
-        Adventure,
+        Екшън = 1,
+        Комедия,
+        Драма,
+        Фантаскика,
+        Трилър,
+        Приключенски,
     }
     public enum Category
     {
-        New = 1,
-        Popular,
-        MustWatch,
-        Upcomming
+        Нов = 1,
+        Популярен,
+        Препоръчителен,
+        Предстоящ
     }
 }

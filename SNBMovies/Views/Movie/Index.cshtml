@@ -57,7 +57,7 @@
                                         <div style="display: flex;   flex-wrap: wrap;">
                                             @foreach (var item in Model)
                                             {
-                                                if (item.Category.ToString() == "New")
+                                                if (item.Category.ToString() == "Нов")
                                                 {
                                                     <div class="col-lg-4 new-relise-gd mt-lg-0 mt-0">
                                                         <div style="width:275px;">
@@ -74,7 +74,7 @@
                                                                     </a>
                                                                 </div>
                                                                 <div class="message">
-                                                                    <a class="author-book-title" href="genre.html">@item.Title</a>
+                                                                <a class="author-book-title" asp-controller="Movie" asp-action="Details" asp-route-id="@item.Id">@item.Title</a>
                                                                     <h4>
                                                                         <span class="post">
                                                                             <span class="fa fa-clock-o"> </span> @item.Genre
@@ -97,7 +97,7 @@
                                         <div style="display: flex;   flex-wrap: wrap;">
                                             @foreach (var item in Model)
                                             {
-                                                if (item.Category.ToString() == "Popular")
+                                                if (item.Category.ToString() == "Популярен")
                                                 {
                                                     <div class="col-lg-4 new-relise-gd mt-lg-0 mt-0">
                                                         <div style="width:275px;">
@@ -114,7 +114,7 @@
                                                                     </a>
                                                                 </div>
                                                                 <div class="message">
-                                                                    <a class="author-book-title" href="genre.html">@item.Title</a>
+                                                                <a class="author-book-title" asp-controller="Movie" asp-action="Details" asp-route-id="@item.Id">@item.Title</a>
                                                                     <h4>
                                                                         <span class="post">
                                                                             <span class="fa fa-clock-o"> </span> @item.Genre
@@ -137,7 +137,7 @@
                                         <div style="display: flex;   flex-wrap: wrap;">
                                             @foreach (var item in Model)
                                             {
-                                                if (item.Category.ToString() == "MustWatch")
+                                                if (item.Category.ToString() == "Препоръчителен")
                                                 {
                                                     <div class="col-lg-4 new-relise-gd mt-lg-0 mt-0">
                                                         <div style="width:275px;">
@@ -154,7 +154,7 @@
                                                                     </a>
                                                                 </div>
                                                                 <div class="message">
-                                                                    <a class="author-book-title" href="genre.html">@item.Title</a>
+                                                                <a class="author-book-title" asp-controller="Movie" asp-action="Details" asp-route-id="@item.Id">@item.Title</a>
                                                                     <h4>
                                                                         <span class="post">
                                                                             <span class="fa fa-clock-o"> </span> @item.Genre
@@ -177,7 +177,7 @@
                                         <div style="display: flex;   flex-wrap: wrap;">
                                             @foreach (var item in Model)
                                             {
-                                                if (item.Category.ToString() == "Upcomming")
+                                                if (item.Category.ToString() == "Предстоящ")
                                                 {
                                                     <div class="col-lg-4 new-relise-gd mt-lg-0 mt-0">
                                                         <div style="width:275px;">
@@ -194,7 +194,7 @@
                                                                     </a>
                                                                 </div>
                                                                 <div class="message">
-                                                                    <a class="author-book-title" href="genre.html">@item.Title</a>
+                                                                <a class="author-book-title" asp-controller="Movie" asp-action="Details" asp-route-id="@item.Id">@item.Title</a>
                                                                     <h4>
                                                                         <span class="post">
                                                                             <span class="fa fa-clock-o"> </span> @item.Genre

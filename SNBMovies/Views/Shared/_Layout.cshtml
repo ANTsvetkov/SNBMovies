@@ -120,14 +120,14 @@ Author URL: http://w3layouts.com
                     <!--/search-right-->
                     <!--/search-right-->
                     <div class="search-right">
-                        <a asp-action="Filter" asp-controller="Movie" class="btn search-hny mr-lg-3 mt-lg-0 mt-4" title="search">
+                        <a href="#search" class="btn search-hny mr-lg-3 mt-lg-0 mt-4" title="search">
                             Търси <span class="fa fa-search ml-3" aria-hidden="true"></span>
                         </a>
                         <!-- search popup -->
                         <div id="search" class="pop-overlay">
                             <div class="popup">
-                                <form asp-action="Filter" asp-controller="Movie" method="post" class="search-box">
-                                    <input type="search" placeholder="Search your Keyword" name="search"
+                                <form asp-action="Search" asp-controller="Movie" method="post" class="search-box">
+                                    <input type="search" placeholder="Потърси филм" name="searchTerm"
                                            required="required" autofocus="">
                                     <button type="submit" class="btn">
                                         <span class="fa fa-search"
@@ -137,9 +137,9 @@ Author URL: http://w3layouts.com
                                 <div class="browse-items">
                                     <h3 class="hny-title two mt-md-5 mt-4">Виж всички:</h3>
                                     <ul class="search-items">
-                                        <li><a href="genre.html">Нови филми</a></li>
-                                        <li><a href="genre.html">Популярни филми</a></li>
-                                        <li><a href="genre.html">Препоръчителни</a></li>
+                                        <li><a href="~/Movie/Index">Филми</a></li>
+                                        <li><a href="~/Actor/Index">Актьори</a></li>
+                                        <li><a href="~/Producer/Index">Продуценти</a></li>
                                     </ul>
                                 </div>
                             </div>

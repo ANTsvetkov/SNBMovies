@@ -23,7 +23,7 @@
                         </div>
                         <div class="button-center text-right mt-3 mb-3 mr-2">
                             <p class="btn view-button">
-                                @Model.Where(m=>m.Genre.ToString() == "Action").Count()
+                                @Model.Where(m=>m.Genre.ToString() == "Екшън").Count()
                             </p>
                         </div>
                     </div>
@@ -34,7 +34,7 @@
 
                         @foreach (var item in Model)
                         {
-                            if (item.Genre.ToString() == "Action")
+                            if (item.Genre.ToString() == "Екшън")
                             {
                                 <div style="width:220px;">
                                     <div class="item vhny-grid">
@@ -57,9 +57,6 @@
                                             </a>
                                         </div>
                                         <h3> <a class="title-gd" href="~/Movie/Details/@item.Id">@item.Title</a></h3>
-                                        <div class="button-center text-center mt-4">
-                                            <a href="~/Movie/Details/@item.Id" class="btn watch-button"><i class=" fa fa-shopping-bag"></i> Купи</a>
-                                        </div>
 
                                     </div>
                                 </div>
@@ -83,7 +80,7 @@
                         </div>
                         <div class="button-center text-right mt-3 mb-3 mr-2">
                             <p class="btn view-button">
-                                @Model.Where(m=>m.Genre.ToString() == "Thriller").Count()
+                                @Model.Where(m=>m.Genre.ToString() == "Трилър").Count()
                             </p>
                         </div>
                     </div>
@@ -94,7 +91,7 @@
 
                         @foreach (var item in Model)
                         {
-                            if (item.Genre.ToString() == "Thriller")
+                            if (item.Genre.ToString() == "Трилър")
                             {
                                 <div style="width:220px">
                                     <div class="item vhny-grid">
@@ -117,9 +114,6 @@
                                             </a>
                                         </div>
                                         <h3> <a class="title-gd" href="~/Movie/Details/@item.Id">@item.Title</a></h3>
-                                        <div class="button-center text-center mt-4">
-                                            <a href="~/Movie/Details/@item.Id" class="btn watch-button"><i class=" fa fa-shopping-bag"></i> Купи</a>
-                                        </div>
 
                                     </div>
                                 </div>
@@ -143,7 +137,7 @@
                         </div>
                         <div class="button-center text-right mt-3 mb-3 mr-2">
                             <p class="btn view-button">
-                                @Model.Where(m=>m.Genre.ToString() == "Comedy").Count()
+                                @Model.Where(m=>m.Genre.ToString() == "Комедия").Count()
                             </p>
                         </div>
                     </div>
@@ -154,7 +148,7 @@
 
                         @foreach (var item in Model)
                         {
-                            if (item.Genre.ToString() == "Comedy")
+                            if (item.Genre.ToString() == "Комедия")
                             {
                                 <div style="width:220px">
                                     <div class="item vhny-grid">
@@ -177,9 +171,6 @@
                                             </a>
                                         </div>
                                         <h3> <a class="title-gd" href="~/Movie/Details/@item.Id">@item.Title</a></h3>
-                                        <div class="button-center text-center mt-4">
-                                            <a href="~/Movie/Details/@item.Id" class="btn watch-button"><i class=" fa fa-shopping-bag"></i> Купи</a>
-                                        </div>
 
                                     </div>
                                 </div>
@@ -203,7 +194,7 @@
                         </div>
                         <div class="button-center text-right mt-3 mb-3 mr-2">
                             <p class="btn view-button">
-                                @Model.Where(m=>m.Genre.ToString() == "Drama").Count()
+                                @Model.Where(m=>m.Genre.ToString() == "Драма").Count()
                             </p>
                         </div>
                     </div>
@@ -214,7 +205,7 @@
 
                         @foreach (var item in Model)
                         {
-                            if (item.Genre.ToString() == "Drama")
+                            if (item.Genre.ToString() == "Драма")
                             {
                                 <div style="width:220px">
                                     <div class="item vhny-grid">
@@ -237,9 +228,6 @@
                                             </a>
                                         </div>
                                         <h3> <a class="title-gd" href="~/Movie/Details/@item.Id">@item.Title</a></h3>
-                                        <div class="button-center text-center mt-4">
-                                            <a href="~/Movie/Details/@item.Id" class="btn watch-button"><i class=" fa fa-shopping-bag"></i> Купи</a>
-                                        </div>
 
                                     </div>
                                 </div>
@@ -263,7 +251,7 @@
                         </div>
                         <div class="button-center text-right mt-3 mb-3 mr-2">
                             <p class="btn view-button">
-                                @Model.Where(m=>m.Genre.ToString() == "Fantasy").Count()
+                                @Model.Where(m=>m.Genre.ToString() == "Фантастика").Count()
                             </p>
                         </div>
                     </div>
@@ -274,7 +262,7 @@
 
                         @foreach (var item in Model)
                         {
-                            if (item.Genre.ToString() == "Fantasy")
+                            if (item.Genre.ToString() == "Фантастика")
                             {
                                 <div style="width:220px">
                                     <div class="item vhny-grid">
@@ -297,9 +285,6 @@
                                             </a>
                                         </div>
                                         <h3> <a class="title-gd" href="~/Movie/Details/@item.Id">@item.Title</a></h3>
-                                        <div class="button-center text-center mt-4">
-                                            <a href="~/Movie/Details/@item.Id" class="btn watch-button"><i class=" fa fa-shopping-bag"></i> Купи</a>
-                                        </div>
 
                                     </div>
                                 </div>
@@ -323,7 +308,7 @@
                         </div>
                         <div class="button-center text-right mt-3 mb-3 mr-2">
                             <p class="btn view-button">
-                                @Model.Where(m=>m.Genre.ToString() == "Adventure").Count()
+                                @Model.Where(m=>m.Genre.ToString() == "Приключески").Count()
                             </p>
                         </div>
                     </div>
@@ -334,7 +319,7 @@
 
                         @foreach (var item in Model)
                         {
-                            if (item.Genre.ToString() == "Adventure")
+                            if (item.Genre.ToString() == "Приключески")
                             {
                                 <div style="width:220px">
                                     <div class="item vhny-grid">
@@ -357,10 +342,6 @@
                                             </a>
                                         </div>
                                         <h3> <a class="title-gd" href="~/Movie/Details/@item.Id">@item.Title</a></h3>
-                                        <div class="button-center text-center mt-4">
-                                            <a href="~/Movie/Details/@item.Id" class="btn watch-button"><i class=" fa fa-shopping-bag"></i> Купи</a>
-                                        </div>
-
                                     </div>
                                 </div>
                             }
