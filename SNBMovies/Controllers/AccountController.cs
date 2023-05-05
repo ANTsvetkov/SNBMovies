@@ -125,7 +125,7 @@ namespace SNBMovies.Controllers
                 // Изпълнява се обновяването на потребителя чрез UserManager и асинхронна операция.
                 if (response.Succeeded)
                 {
-                    return View("UserProfile");
+                    return RedirectToAction("UserProfile");
                     // Ако обновяването е успешно, връща се изгледа UserProfile.
                 }
                 else
